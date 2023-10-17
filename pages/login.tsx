@@ -5,7 +5,7 @@ import { PageWithLayout1 } from "./_app";
 const LoginPage: PageWithLayout1 = () => {
   return (
     <>
-      <h3 className='bg-slate-50 relative top-[5rem]'>Hello</h3>
+      <div className='z-10 bg-black relative text-white top-[5rem]'>Hello</div>
     </>
   );
 };
@@ -13,8 +13,8 @@ const LoginPage: PageWithLayout1 = () => {
 LoginPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
-      {page}
       <Layout1 />
+      {page}
     </>
   );
 };
