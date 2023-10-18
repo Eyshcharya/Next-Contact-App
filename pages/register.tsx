@@ -38,7 +38,7 @@ const Register = () => {
         </div>
 
         {/* Buttons */}
-        <section className='mt-6'>
+        <section className='mt-4'>
           <button className='btn-primary w-[131px] h-[48px] mb-5'>
             register
           </button>
