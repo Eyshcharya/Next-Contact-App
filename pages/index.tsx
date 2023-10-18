@@ -1,9 +1,4 @@
 const HomePage = () => {
-  return (
-    <div>
-      <h1 className='text-3xl font-bold underline'>Hello, Next.js!</h1>
-      <div className='mt-20'>Home</div>
-    </div>
-  );
+  return <div></div>;
 };
 export default HomePage;
