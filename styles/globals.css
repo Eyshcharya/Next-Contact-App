@@ -24,4 +24,7 @@ body {
   .btn-primary {
     @apply rounded-[50px] border-[1px] text-[25px];
   }
+  .radio-input {
+    @apply mr-3 appearance-none border-[1px] p-[5px] rounded-full checked:bg-white;
+  }
 }
