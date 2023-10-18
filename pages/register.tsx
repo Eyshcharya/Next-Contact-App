@@ -1,8 +1,11 @@
+import type { ReactElement } from "react";
 import { TwcLogo } from "../public/logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Layout1 from "@/components/layouts/layout1";
+import { PageWithLayout } from "./_app";
 
-const Register = () => {
+const Register: PageWithLayout = () => {
   const router = useRouter();
   const handleRegister = () => {
     router.push(`/`);
@@ -63,3 +66,11 @@ const Register = () => {
   );
 };
 export default Register;
+Register.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <Layout1 />
+      {page}
+    </>
+  );
+};
