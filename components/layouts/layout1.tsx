@@ -1,8 +1,7 @@
 import { TwcLogo } from "../../public/logo";
 const Layout1 = ({ children }: any) => {
   return (
-    <div>
-      {" "}
+    <>
       <div className='min-h-screen bg-[url(../public/Background.png)]'>
         <div className='z-0 min-w-[1502px] min-h-[1502px] absolute top-[-367px] left-[-716px] bg-[#083F46] rounded-full '></div>
         <div className='w-[322px] absolute top-[255px] left-[868px] text-[#083F46]'>
@@ -14,7 +13,7 @@ const Layout1 = ({ children }: any) => {
         </div>
       </div>
       <main>{children}</main>
-    </div>
+    </>
   );
 };
 export default Layout1;
