@@ -1,7 +1,12 @@
 import { TwcLogo } from "../public/logo";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Register = () => {
+  const router = useRouter();
+  const handleRegister = () => {
+    router.push(`/`);
+  };
   return (
     <>
       {/* Background */}
@@ -39,7 +44,10 @@ const Register = () => {
 
         {/* Buttons */}
         <section className='mt-4'>
-          <button className='btn-primary w-[131px] h-[48px] mb-5'>
+          <button
+            onClick={handleRegister}
+            className='btn-primary w-[131px] h-[48px] mb-5'
+          >
             register
           </button>
           <br />

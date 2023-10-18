@@ -1,6 +1,11 @@
+import { useRouter } from "next/router";
 import { TwcLogo } from "../public/logo";
 import Link from "next/link";
 const LoginPage = () => {
+  const router = useRouter();
+  const handleLogin = () => {
+    router.push(`/`);
+  };
   return (
     <>
       {/* Background */}
@@ -36,7 +41,12 @@ const LoginPage = () => {
 
         {/* Buttons */}
         <section className='mt-6 flex flex-row'>
-          <button className='btn-primary w-[131px] h-[48px]'>login</button>
+          <button
+            onClick={handleLogin}
+            className='btn-primary w-[131px] h-[48px]'
+          >
+            login
+          </button>
           <label className='pt-2 pl-5 text-[25px]'>
             or{" "}
             <Link

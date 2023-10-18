@@ -1,3 +1,4 @@
+@import url("https://fonts.cdnfonts.com/css/futura-md-bt");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,16 +7,21 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  font-family: "Futura Md BT", sans-serif;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  font-family: "Futura Md BT", sans-serif;
 }
-
 body {
-  color: rgb(var(--foreground-rgb));
+  overflow: hidden;
+  font-family: "Futura Md BT", sans-serif;
+}
+
+@layer components {
+  .input-primary {
+    @apply w-[477px] h-[55px] rounded-[50px] pl-9 text-[25px] placeholder-[#083F46] text-[#083F46] focus:outline-none mb-10;
+  }
+  .btn-primary {
+    @apply rounded-[50px] border-[1px] text-[25px];
+  }
 }
