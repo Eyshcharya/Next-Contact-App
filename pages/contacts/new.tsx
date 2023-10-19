@@ -2,16 +2,30 @@ import { ContactSchema } from "@/Utils/formValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getContacts, addContact } from "../../libs/helper";
+import { Contact } from "@/Utils/types";
+import { useRouter } from "next/router";
 
 const AddContactPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(ContactSchema) });
+  const [contacts, setContacts] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    getContacts()
+      .then((res) => setContacts(res))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(ContactSchema),
+  });
 
   // form Submission
-  const onSubmit = async () => {};
+  const onSubmit = async (contact: Contact) => {
+    addContact(contact);
+    router.push(`/contacts`);
+  };
   return (
     <>
       <div className='text-white absolute top-[190px] left-[242px]'>
@@ -52,7 +66,7 @@ const AddContactPage = () => {
           </div>
 
           {/* gender */}
-          <div className='absolute top-[240px] left-[538px] text-[25px]'>
+          <div className='absolute top-[240px] left-[580px] text-[25px]'>
             <label>Gender : </label>
 
             <input
@@ -74,24 +88,30 @@ const AddContactPage = () => {
           </div>
 
           {/* Submit-Btn */}
-          {/* <button
-          className='btn-primary w-[280px] h-[48px] mt-[50px]'
-          type='submit'
-        >
-          add new contact
-        </button> */}
-          <button
-            className='btn-primary w-[310px] h-[48px] mt-[50px]'
-            type='submit'
-          >
-            add your first contact
-          </button>
-          <Link
-            href={"/contacts"}
-            className='underline text-[23px] underline-offset-4 ml-[495px]'
-          >
-            {`View Contacts >>`}
-          </Link>
+          {contacts?.length === 0 ? (
+            <button
+              className='btn-primary w-[310px] h-[48px] mt-[50px]'
+              type='submit'
+            >
+              add your first contact
+            </button>
+          ) : (
+            <>
+              <button
+                className='btn-primary w-[280px] h-[48px] mt-[50px]'
+                type='submit'
+              >
+                add new contact
+              </button>
+
+              <Link
+                href={"/contacts"}
+                className='underline text-[23px] underline-offset-4 ml-[495px]'
+              >
+                {`View Contacts >>`}
+              </Link>
+            </>
+          )}
         </form>
       </div>
     </>
