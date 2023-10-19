@@ -9,12 +9,19 @@ import { useRouter } from "next/router";
 
 const AddContactPage = () => {
   const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     getContacts()
-      .then((res) => setContacts(res))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        setContacts(res);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   }, []);
 
   const { register, handleSubmit } = useForm({
@@ -25,10 +32,11 @@ const AddContactPage = () => {
   const onSubmit = async (contact: Contact) => {
     addContact(contact);
     router.push(`/contacts`);
+    getContacts();
   };
   return (
     <>
-      <div className='text-white absolute top-[190px] left-[242px]'>
+      <div className='text-white absolute top-[180px] left-[242px]'>
         <section className='h-[180px] w-[950px]'>
           <h1 className='font-bold text-[50px] leading-[73px]'>New Contact</h1>
         </section>
@@ -88,12 +96,13 @@ const AddContactPage = () => {
           </div>
 
           {/* Submit-Btn */}
+
           {contacts?.length === 0 ? (
             <button
               className='btn-primary w-[310px] h-[48px] mt-[50px]'
               type='submit'
             >
-              add your first contact
+              {loading ? "Loading..." : "add your first contact"}
             </button>
           ) : (
             <>
