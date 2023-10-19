@@ -1,6 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import connectDB from "../../../libs/db";
-import { getContacts, postContacts, updateContacts } from "@/libs/controllers";
+import {
+  deleteContacts,
+  getContacts,
+  postContacts,
+  updateContacts,
+} from "@/libs/controllers";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //  connectDB();
@@ -20,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       updateContacts(req, res);
       break;
     case "DELETE":
-      res.status(200).json({ method: method });
+      deleteContacts(req, res);
       break;
     default:
       res.status(405).end(`method @{method} not allowed`);
