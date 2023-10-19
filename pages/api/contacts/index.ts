@@ -8,7 +8,6 @@ import {
 } from "@/libs/controllers";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  //  connectDB();
   connectDB().catch(() => {
     res.status(405).json({ error: "Error in the connection" });
   });
@@ -16,20 +15,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case "GET":
-      getContacts(req, res);
-      break;
+      return getContacts(req, res);
+
     case "POST":
-      postContacts(req, res);
-      break;
+      return postContacts(req, res);
+
     case "PUT":
-      updateContacts(req, res);
-      break;
+      return updateContacts(req, res);
+
     case "DELETE":
-      deleteContacts(req, res);
-      break;
+      return deleteContacts(req, res);
+
     default:
-      res.status(405).end(`method @{method} not allowed`);
-      break;
+      return res.status(405).end(`method @{method} not allowed`);
   }
 };
 export default handler;
