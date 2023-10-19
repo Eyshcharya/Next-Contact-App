@@ -56,3 +56,23 @@ export async function updateContacts(
     res.status(404).json({ error: error });
   }
 }
+
+// http://localhost:3000/api/contacts/{contactId}
+// DELETE
+export async function deleteContacts(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  try {
+    const { contactId } = req.query;
+
+    const deleteContact = await Contacts.findByIdAndDelete(contactId);
+    if (deleteContact) {
+      res.status(200).json({ message: "Contact deleted!!!!", deleteContact });
+    } else {
+      res.status(404).json({ error: "Failed to delete contact" });
+    }
+  } catch (error) {
+    res.status(404).json({ error: error });
+  }
+}
