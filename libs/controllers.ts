@@ -7,12 +7,12 @@ export async function getContacts(req: NextApiRequest, res: NextApiResponse) {
   try {
     const contacts = await Contacts.find({});
     if (contacts) {
-      res.status(200).json(contacts);
+      return res.status(200).json(contacts);
     } else {
-      res.status(404).json({ error: "Contacts Not Found" });
+      return res.status(404).json({ error: "Contacts Not Found" });
     }
   } catch (error) {
-    res.status(404).json({ error: error });
+    return res.status(404).json({ error: error });
   }
 }
 
@@ -23,12 +23,12 @@ export async function postContacts(req: NextApiRequest, res: NextApiResponse) {
     const contact = req.body;
     const createContact = await Contacts.create(contact);
     if (createContact) {
-      res.status(200).json(createContact);
+      return res.status(200).json(createContact);
     } else {
-      res.status(404).json({ error: "Invalid Data" });
+      return res.status(404).json({ error: "Invalid Data" });
     }
   } catch (error) {
-    res.status(404).json({ error: error });
+    return res.status(404).json({ error: error });
   }
 }
 
@@ -39,21 +39,16 @@ export async function updateContacts(
   res: NextApiResponse
 ) {
   try {
-    const { _id, name, email, phone, gender } = req.body;
-
-    const updatedContact = await Contacts.findByIdAndUpdate(_id, {
-      name,
-      email,
-      phone,
-      gender,
-    });
+    const contact = req.body;
+    const { contactId } = req.query;
+    const updatedContact = await Contacts.findByIdAndUpdate(contactId, contact);
     if (updatedContact) {
-      res.status(200).json(updatedContact);
+      return res.status(200).json(updatedContact);
     } else {
-      res.status(404).json({ error: "Invalid Id or Data" });
+      return res.status(404).json({ error: "Invalid Id or Data" });
     }
   } catch (error) {
-    res.status(404).json({ error: error });
+    return res.status(404).json({ error: error });
   }
 }
 
@@ -68,11 +63,13 @@ export async function deleteContacts(
 
     const deleteContact = await Contacts.findByIdAndDelete(contactId);
     if (deleteContact) {
-      res.status(200).json({ message: "Contact deleted!!!!", deleteContact });
+      return res
+        .status(200)
+        .json({ message: "Contact deleted!!!!", deleteContact });
     } else {
-      res.status(404).json({ error: "Failed to delete contact" });
+      return res.status(404).json({ error: "Failed to delete contact" });
     }
   } catch (error) {
-    res.status(404).json({ error: error });
+    return res.status(404).json({ error: error });
   }
 }
