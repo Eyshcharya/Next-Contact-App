@@ -1,6 +1,6 @@
-import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import connectDB from "../../../libs/db";
-import { getContacts, postContacts } from "@/libs/controllers";
+import { getContacts, postContacts, updateContacts } from "@/libs/controllers";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //  connectDB();
@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       postContacts(req, res);
       break;
     case "PUT":
-      res.status(200).json({ method: method });
+      updateContacts(req, res);
       break;
     case "DELETE":
       res.status(200).json({ method: method });

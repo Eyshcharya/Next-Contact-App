@@ -31,3 +31,28 @@ export async function postContacts(req: NextApiRequest, res: NextApiResponse) {
     res.status(404).json({ error: error });
   }
 }
+
+// http://localhost:3000/api/contacts
+// PUT
+export async function updateContacts(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  try {
+    const { _id, name, email, phone, gender } = req.body;
+
+    const updatedContact = await Contacts.findByIdAndUpdate(_id, {
+      name,
+      email,
+      phone,
+      gender,
+    });
+    if (updatedContact) {
+      res.status(200).json(updatedContact);
+    } else {
+      res.status(404).json({ error: "Invalid Id or Data" });
+    }
+  } catch (error) {
+    res.status(404).json({ error: error });
+  }
+}
