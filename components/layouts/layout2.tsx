@@ -1,6 +1,10 @@
 import { Icon, LogoutIcon } from "@/public/logo";
 import { useRouter } from "next/router";
 
+// layout 2
+// /
+// /contacts
+// /contacts/new
 const layout2 = ({ children }: any) => {
   const router = useRouter();
   const handleLogout = () => {

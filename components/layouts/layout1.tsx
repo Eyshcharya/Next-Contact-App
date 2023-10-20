@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
 import { TwcLogo } from "../../public/logo";
+
+// layout 1
+// /login
+// /register
 const Layout1 = ({ children }: { children: ReactNode }) => {
   return (
     <>
