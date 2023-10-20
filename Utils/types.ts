@@ -3,5 +3,7 @@ export interface Contact {
   email: string;
   phone: string;
   gender: string;
-  _id: string;
 }
+export type ContactObject = Contact & {
+  _id: string;
+};

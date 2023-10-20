@@ -1,5 +1,4 @@
 import type { ReactElement } from "react";
-import { TwcLogo } from "../public/logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Layout1 from "@/components/layouts/layout1";
@@ -12,18 +11,6 @@ const Register: PageWithLayout = () => {
   };
   return (
     <>
-      {/* Background */}
-      <div className='min-h-screen bg-[url(../public/Background.png)]'>
-        <div className='z-0 min-w-[1502px] min-h-[1502px] absolute top-[-367px] left-[-716px] bg-[#083F46] rounded-full '></div>
-        <div className='w-[322px] absolute top-[255px] left-[868px] text-[#083F46]'>
-          <TwcLogo />
-          <p className='text-[75px] max-w-[318] leading-none'>
-            <span className='font-bold text-[80px] '>contacts </span>
-            portal
-          </p>
-        </div>
-      </div>
-
       {/* Heading */}
       <div className='absolute top-[125px] left-[122px] text-white'>
         <>

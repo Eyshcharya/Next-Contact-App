@@ -12,6 +12,7 @@ const AddContactPage = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+  // getContacts
   useEffect(() => {
     getContacts()
       .then((res) => {

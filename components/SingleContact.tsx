@@ -1,11 +1,11 @@
-import { Contact } from "@/Utils/types";
+import { ContactObject } from "@/Utils/types";
 import { MaleAvatar, FemaleAvatar } from "../public/avatar";
 import { EditIcon, DeleteIcon, ArrowIcon } from "../public/icon";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
-import { deleteContact, updateContact, getContacts } from "@/libs/helper";
+import { deleteContact, updateContact } from "@/libs/helper";
 
-type PageProps = Contact & { refetch: Function };
+type PageProps = ContactObject & { refetch: Function };
 
 const SingleContact = ({
   name,
@@ -45,10 +45,9 @@ const SingleContact = ({
   };
 
   // update contact
-  const handleForm = (e: Event) => {
+  const handleForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const contact: Contact = {
-      _id: _id,
+    const contact = {
       name: editName || name,
       email: editEmail || email,
       phone: editPhone || phone,

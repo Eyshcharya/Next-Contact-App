@@ -32,7 +32,7 @@ export async function postContacts(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-// http://localhost:3000/api/contacts
+// http://localhost:3000/api/contacts?contactId={_id}
 // PUT
 export async function updateContacts(
   req: NextApiRequest,
@@ -52,7 +52,7 @@ export async function updateContacts(
   }
 }
 
-// http://localhost:3000/api/contacts/{contactId}
+// http://localhost:3000/api/contacts?contactId={_id}
 // DELETE
 export async function deleteContacts(
   req: NextApiRequest,

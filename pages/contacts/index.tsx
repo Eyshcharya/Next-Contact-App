@@ -1,7 +1,7 @@
 import { getContacts } from "../../libs/helper";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Contact } from "@/Utils/types";
+import { ContactObject } from "@/Utils/types";
 import SingleContact from "@/components/SingleContact";
 
 const ContactsPage = () => {
@@ -9,6 +9,7 @@ const ContactsPage = () => {
   const [loading, setLoading] = useState(true);
   const [refetch, setRefetch] = useState(false);
 
+  // get contacts
   useEffect(() => {
     getContacts()
       .then((res) => {
@@ -52,7 +53,7 @@ const ContactsPage = () => {
             </section>
           )}
 
-          {contacts?.map((contact: Contact) => {
+          {contacts?.map((contact: ContactObject) => {
             return <SingleContact {...contact} refetch={setRefetch} />;
           })}
         </div>
