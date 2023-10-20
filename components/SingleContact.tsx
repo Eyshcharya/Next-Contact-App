@@ -117,6 +117,7 @@ const SingleContact = ({
             <div className='text-left pl-2 pt-1 relative'>
               {Gender}
               <button
+                type='button'
                 className='absolute left-[90px] top-[6px]'
                 onClick={() => {
                   handleSwitchBtn(Gender);
@@ -150,8 +151,8 @@ const SingleContact = ({
           {/* save-btn */}
           <div className=''>
             <button
-              className='bg-[#083f46] text-white rounded-[2rem] py-1 px-4'
               type='submit'
+              className='bg-[#083f46] text-white rounded-[2rem] py-1 px-4'
             >
               save
             </button>
