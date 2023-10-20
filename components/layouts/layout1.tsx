@@ -1,5 +1,6 @@
+import { ReactNode } from "react";
 import { TwcLogo } from "../../public/logo";
-const Layout1 = ({ children }: any) => {
+const Layout1 = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <div className='min-h-screen bg-[url(../public/Background.png)]'>

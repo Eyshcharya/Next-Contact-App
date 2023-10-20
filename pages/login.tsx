@@ -56,8 +56,7 @@ const LoginPage: PageWithLayout = () => {
 LoginPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <>
-      <Layout1 />
-      {page}
+      <Layout1>{page}</Layout1>
     </>
   );
 };
