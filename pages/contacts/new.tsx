@@ -28,7 +28,7 @@ const AddContactPage = () => {
     resolver: yupResolver(ContactSchema),
   });
 
-  // form Submission
+  // post contact
   const onSubmit = async (contact: Contact) => {
     addContact(contact);
     router.push(`/contacts`);
