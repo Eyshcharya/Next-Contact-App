@@ -7,18 +7,21 @@ import SingleContact from "@/components/SingleContact";
 const ContactsPage = () => {
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refetch, setRefetch] = useState(false);
 
   useEffect(() => {
     getContacts()
       .then((res) => {
         setContacts(res);
         setLoading(false);
+        setRefetch(false);
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
+        setRefetch(false);
       });
-  }, []);
+  }, [refetch]);
 
   return (
     <>
@@ -40,7 +43,7 @@ const ContactsPage = () => {
         </section>
         <div className='bg-white rounded-[1rem] mt-4 w-[1100px] text-[#083F46] text-[18px]'>
           {contacts.length === 0 ? null : (
-            <section className='grid grid-cols-5 font-bold py-4'>
+            <section className='grid-style font-bold pt-4 pb-8'>
               <div> </div>
               <div>Full Name</div>
               <div>Gender</div>
@@ -48,8 +51,9 @@ const ContactsPage = () => {
               <div>Phone Number</div>
             </section>
           )}
-          {contacts?.map((contact: Contact, index) => {
-            return <SingleContact key={index} {...contact} />;
+
+          {contacts?.map((contact: Contact) => {
+            return <SingleContact {...contact} refetch={setRefetch} />;
           })}
         </div>
       </div>
