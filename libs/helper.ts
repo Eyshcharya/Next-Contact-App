@@ -34,7 +34,10 @@ export const updateContact = async (contactId: string, contact: Contact) => {
       body: JSON.stringify(contact),
     };
 
-    const response = await fetch(`${BASE_URL}/contacts?${contactId}`, Options);
+    const response = await fetch(
+      `${BASE_URL}/contacts?contactId=${contactId}`,
+      Options
+    );
     const data = await response.json();
     return data;
   } catch (error) {
