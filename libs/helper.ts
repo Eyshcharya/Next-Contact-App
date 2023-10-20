@@ -50,7 +50,10 @@ export const deleteContact = async (contactId: string) => {
       headers: { "Content-Type": "application/json" },
     };
 
-    const response = await fetch(`${BASE_URL}/contacts?${contactId}`, Options);
+    const response = await fetch(
+      `${BASE_URL}/contacts?contactId=${contactId}`,
+      Options
+    );
     const data = await response.json();
     return data;
   } catch (error) {
