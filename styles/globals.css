@@ -27,4 +27,16 @@ body {
   .radio-input {
     @apply mr-3 appearance-none border-[1px] p-[5px] rounded-full checked:bg-white;
   }
+  .grid-style {
+    @apply grid grid-cols-[0.8fr_1.8fr_1fr_1.6fr_1.1fr_0.6fr];
+  }
+  .modal-container {
+    @apply fixed top-0 left-0 w-screen h-screen bg-[#00000099] backdrop-blur-[7px] z-10 flex justify-center items-center;
+  }
+  .modal {
+    @apply bg-white text-center p-12 pb-6 rounded-[2rem] w-[600px] font-normal text-[30px];
+  }
+  .modal-btn {
+    @apply w-max mx-4 py-2 px-6 rounded-[2rem] bg-[#083f46] text-[23px] text-white my-7;
+  }
 }
