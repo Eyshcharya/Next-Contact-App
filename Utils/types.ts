@@ -3,4 +3,5 @@ export interface Contact {
   email: string;
   phone: string;
   gender: string;
+  _id: string;
 }
